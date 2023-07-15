@@ -13,10 +13,12 @@ import lombok.ToString;
 @Table(name = "PERSON")
 public class Person {
     public Person(){}
-    public Person(String firstName, String lastName, int age) {
+    public Person(String firstName, String lastName, int age, Rule rule, Rule ruleTitle) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.rule = rule;
+        this.ruleTitle = ruleTitle;
     }
 
     @Id
@@ -28,4 +30,10 @@ public class Person {
     private String lastName;
     @Column(name = "age")
     private int age;
+    @Column(name = "rule")
+    @Enumerated/* = @Enumerated(EnumType.ORDINAL)*/
+    private Rule rule;
+    @Column(name = "ruleTitle")
+    @Enumerated(EnumType.STRING)
+    private Rule ruleTitle;
 }
